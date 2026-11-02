@@ -220,6 +220,67 @@
     .btn:hover, .chip:hover{transform:none;}
   }
 </style>
+<style>
+  /* SKILL GROUPS (added) */
+  .skills-detail{margin-top:40px;}
+  .skills-detail h3.sub{font-family:var(--display);font-weight:700;font-size:clamp(24px,3vw,32px);letter-spacing:-0.01em;margin-bottom:8px;}
+  .skills-detail .intro{margin-bottom:28px;}
+  .card.butter{background:var(--butter);}
+  .group-skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px;margin-bottom:22px;}
+  .group .skill{background:rgba(255,255,255,.08);padding:18px;border-radius:22px;}
+  .group .skill .ic{width:48px;height:48px;margin-bottom:12px;}
+  .group .skill h3{font-size:18px;margin-bottom:2px;}
+  .group .skill p{font-size:13px;margin-bottom:0;}
+  .group ul{list-style:none;display:grid;gap:14px;}
+  .group li{font-size:15px;color:var(--ink);opacity:.82;line-height:1.55;}
+  .group li strong{font-weight:600;opacity:1;color:var(--ink);}
+</style>
+<style>
+  /* SKILLS POLISH (added, overrides only) */
+  .skills-detail .grid{gap:22px;}
+  .card.group{
+    padding:32px;position:relative;overflow:hidden;
+    border:1px solid rgba(255,255,255,.08);
+    transition:transform .25s, border-color .25s;
+  }
+  .card.group:hover{transform:translateY(-4px);border-color:rgba(255,255,255,.22);}
+  .card.group > h3{
+    font-size:22px;margin-bottom:20px;padding-bottom:16px;
+    border-bottom:1px solid rgba(255,255,255,.12);
+  }
+  /* tools become compact logo chips instead of big tiles */
+  .group-skills{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:22px;}
+  .group .skill{
+    display:flex;align-items:center;gap:10px;
+    padding:6px 16px 6px 6px;border-radius:999px;
+    background:rgba(255,255,255,.10);
+    border:1px solid rgba(255,255,255,.12);
+  }
+  .group .skill .ic{width:36px;height:36px;margin:0;flex:none;overflow:hidden;}
+  .group .skill .ic img{width:22px;height:22px;}
+  .group .skill h3{font-size:15px;margin:0;line-height:1.2;}
+  .group .skill p{display:none;}
+  /* descriptions: quieter, evenly spaced, name stands out */
+  .group ul{gap:0;}
+  .group li{
+    font-size:14px;line-height:1.6;opacity:.78;
+    padding:12px 0 12px 14px;border-left:2px solid rgba(255,255,255,.22);
+    margin-bottom:10px;
+  }
+  .group li:last-child{margin-bottom:0;}
+  .group li strong{display:block;font-size:14px;margin-bottom:2px;}
+  /* wide card: lay its two descriptions side by side */
+  .card.wide.group ul{grid-template-columns:1fr 1fr;column-gap:28px;}
+  .card.wide.group li{margin-bottom:0;}
+  @media (max-width:760px){
+    .card.group{padding:22px;}
+    .card.wide.group ul{grid-template-columns:1fr;row-gap:10px;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .card.group{transition:none;}
+    .card.group:hover{transform:none;}
+  }
+</style>
 </head>
 <body>
 
@@ -277,12 +338,19 @@
           <p>An interactive analysis of unemployment across Indian regions before and after the COVID-19 lockdown. It compares regions month by month, ranks the hardest-hit areas, and splits the data at the 25 March 2020 lockdown start. Built on a Kaggle dataset.</p>
           <a href="https://unemployment-analysis-sigma.vercel.app/" target="_blank" rel="noopener" class="btn dark">View live project</a>
         </article>
-        <article class="card peach wide row">
+        <article class="card peach row">
           <div>
             <h3>Excel Cleaner</h3>
             <p>View the project details and source code for the Excel Cleaner application on GitHub.</p>
           </div>
           <a href="https://github.com/humakoketso068-svg/" target="_blank" rel="noopener" class="btn dark">View on GitHub</a>
+        </article>
+        <article class="card lav">
+          <div class="shot"><img src="images/Car price predictor.png" alt="Car Price Predictor app screenshot" loading="lazy"></div>
+          <span class="tag">Machine learning</span>
+          <h3>Car Price Predictor</h3>
+          <p>A web app that estimates the price of a car from its details. Enter a car's features and it returns a predicted price.</p>
+          <a href="https://car-price-predictor-13a0dqdmn-koketso-huma.vercel.app/" target="_blank" rel="noopener" class="btn dark">View live project</a>
         </article>
       </div>
     </div>
@@ -292,31 +360,112 @@
     <div class="wrap">
       <h2>Current toolset</h2>
       <p class="intro">The languages I use to build and work with data.</p>
-      <div class="skills">
-        <div class="skill">
-          <div class="ic"><img src="logos/CSharp.png" alt="C# logo"></div>
-          <h3>C#</h3>
-          <p>Object-oriented programming and application logic</p>
-        </div>
-        <div class="skill">
-          <div class="ic"><img src="logos/Python.webp" alt="Python logo"></div>
-          <h3>Python</h3>
-          <p>Scripting, data handling and automation</p>
-        </div>
-        <div class="skill">
-          <div class="ic"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5 logo"></div>
-          <h3>HTML</h3>
-          <p>Structuring content on the web</p>
-        </div>
-        <div class="skill">
-          <div class="ic"><img src="logos/CSS.png" alt="CSS3 logo"></div>
-          <h3>CSS</h3>
-          <p>Styling and responsive layout</p>
-        </div>
-        <div class="skill">
-          <div class="ic"><img src="logos/JavaScript.png" alt="JavaScript logo"></div>
-          <h3>JavaScript</h3>
-          <p>Interactivity and client-side logic</p>
+      <div class="skills-detail">
+        <div class="grid">
+          <article class="card sky group">
+            <h3>Core Programming &amp; Logic</h3>
+            <div class="group-skills">
+              <div class="skill">
+                <div class="ic"><img src="logos/Python.webp" alt="Python logo"></div>
+                <h3>Python</h3>
+                <p>Scripting, data handling and automation</p>
+              </div>
+              <div class="skill">
+                <div class="ic"><img src="logos/CSharp.png" alt="C# logo"></div>
+                <h3>C#</h3>
+                <p>Object-oriented programming and application logic</p>
+              </div>
+            </div>
+            <ul>
+              <li><strong>Python:</strong> Building end-to-end ETL/ELT pipelines, writing data-cleansing scripts, automating file management tasks, and implementing programmatic data logic.</li>
+              <li><strong>C#:</strong> Developing high-performance backend application logic, working with structured data types, and engineering enterprise-scale ingestion modules.</li>
+            </ul>
+          </article>
+          <article class="card mint group">
+            <h3>Database Management &amp; Ingestion</h3>
+            <div class="group-skills">
+              <div class="skill">
+                <div class="ic"><img src="logos/Access.jpg" alt="Microsoft Access logo"></div>
+                <h3>Access</h3>
+                <p>Relational desktop databases</p>
+              </div>
+              <div class="skill">
+                <div class="ic"><img src="logos/Excel.jpg" alt="Microsoft Excel logo"></div>
+                <h3>Excel</h3>
+                <p>Exploratory data analysis and cleaning</p>
+              </div>
+            </div>
+            <ul>
+              <li><strong>Microsoft Access:</strong> Modeling relational desktop databases, defining entity constraints, and practicing foundational database administration concepts.</li>
+              <li><strong>Microsoft Excel:</strong> Conducting initial exploratory data analysis (EDA), verifying source data formats, and mapping out cleaning workflows to automate via backend code.</li>
+            </ul>
+          </article>
+          <article class="card peach group">
+            <h3>Dashboards &amp; Web Interfaces</h3>
+            <div class="group-skills">
+              <div class="skill">
+                <div class="ic"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5 logo"></div>
+                <h3>HTML</h3>
+                <p>Structuring content on the web</p>
+              </div>
+              <div class="skill">
+                <div class="ic"><img src="logos/CSS.png" alt="CSS3 logo"></div>
+                <h3>CSS</h3>
+                <p>Styling and responsive layout</p>
+              </div>
+              <div class="skill">
+                <div class="ic"><img src="logos/JavaScript.png" alt="JavaScript logo"></div>
+                <h3>JavaScript</h3>
+                <p>Interactivity and client-side logic</p>
+              </div>
+            </div>
+            <ul>
+              <li><strong>HTML, CSS &amp; JavaScript:</strong> Constructing clean, responsive front-end layouts and interactive components for internal logging or monitoring interfaces.</li>
+            </ul>
+          </article>
+          <article class="card lav group">
+            <h3>Cloud &amp; Deployment</h3>
+            <div class="group-skills">
+              <div class="skill">
+                <div class="ic"><img src="logos/Github.png" alt="GitHub logo"></div>
+                <h3>GitHub</h3>
+                <p>Version control and code hosting</p>
+              </div>
+              <div class="skill">
+                <div class="ic"><img src="logos/Render.png" alt="Render logo"></div>
+                <h3>Render</h3>
+                <p>Hosting live web apps</p>
+              </div>
+              <div class="skill">
+                <div class="ic"><img src="logos/Vercel.png" alt="Vercel logo"></div>
+                <h3>Vercel</h3>
+                <p>Deploying front-end projects</p>
+              </div>
+            </div>
+            <ul>
+              <li><strong>GitHub &amp; Version Control:</strong> Managing multi-folder repositories, structuring professional project files, and maintaining clean version control practices.</li>
+              <li><strong>Render / Vercel:</strong> Deploying web applications, hosting live user interfaces, and managing cloud environment configurations.</li>
+            </ul>
+          </article>
+          <article class="card butter group wide">
+            <h3>Technical Documentation &amp; Presentation</h3>
+            <div class="group-skills">
+              <div class="skill">
+                <div class="ic"><img src="logos/word.jpg" alt="Microsoft Word logo"></div>
+                <h3>Word</h3>
+                <p>Technical specs and case studies</p>
+              </div>
+              <div class="skill">
+                <div class="ic"><img src="logos/PowerPoint.jpg" alt="Microsoft PowerPoint logo"></div>
+                <h3>PowerPoint</h3>
+                <p>Data flow diagrams and presentations</p>
+              </div>
+            </div>
+            <ul>
+              <li><strong>Microsoft Word:</strong> Drafting clear technical specifications, documenting system architectures, and writing comprehensive project case studies.</li>
+              <li><strong>Microsoft PowerPoint:</strong> Designing data flow diagrams, visualizing pipeline steps, and presenting technical project metrics to non-technical stakeholders.</li>
+            </ul>
+          </article>
         </div>
       </div>
     </div>
